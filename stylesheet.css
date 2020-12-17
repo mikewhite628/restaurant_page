@@ -9,10 +9,14 @@ body {
   background-size: cover;
   color: #fbfbf7;
   font-family: 'Amatic SC';
+  font-size: 30px
 
 }
 
-.navbar {
+.title {
+  font-size: 80px;
+}
+ul {
   list-style-type: none;
   font-size: 40px;
   display: flex;
@@ -20,9 +24,10 @@ body {
   flex-wrap: wrap;
   margin-top: 30px;
   justify-content: center;
+  color: #ff9223;;
 }
 
-.nav-item{
+li {
   width: 300px
 }
 

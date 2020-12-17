@@ -1,40 +1,57 @@
-buildMenu = () => {
-    const content = document.getElementById('content');
-    const navbar = document.createElement('ul');
-    const navHome = document.createElement('li');
-    const navMenu = document.createElement('li');
-    const navAbout = document.createElement('li');
-    const navSpacer = document.createElement('div');
-    const header = document.createElement('h1');
-    const menuBody = document.createElement('div')
-    
-    navbar.classList.add('navbar');
-    navHome.classList.add('nav-item');
-    navMenu.classList.add('nav-item');
-    navAbout.classList.add('nav-item');
-    navSpacer.classList.add('nav-spacer');
-    menuBody.classList.add('text-body')
+import {content, createHtmlElement} from './index.js'
 
-    content.appendChild(navbar); 
-    content.appendChild(navSpacer);
+const menu = [
+    {
+        name: 'Vespur',
+        description: 'An Arabica bean brewed black coffee with a shot of espresso for the creative mind within you',
+        price: '$4.99'
+    },
+    {
+        name: 'The Vespur Special',
+        description: 'A double brewed Robusta bean black coffee with a double shot of espressor guarenteed to keep you going',
+        price: '$8.99'
+    },
+    {
+        name: 'The Lounger',
+        description: 'An Aribica bean brewed coffee with steamed milk and chocolate perfect for a dreary day',
+        price: '$3.99'
+    }
+];
 
-    navHome.appendChild(document.createTextNode('Home'));
-    navbar.appendChild(navHome);
-    
-    //active
-    navMenu.appendChild(document.createTextNode('Menu'));
-    navbar.appendChild(navMenu);
-    navHome.style.background = '#ff9223'
-    navHome.style.color = 'black'
+function render() {
+    const main = document.createElement('main');
+    main.classList.add('main');
 
-    navAbout.appendChild(document.createTextNode('About'));
-    navbar.appendChild(navAbout);
+    const title = createHtmlElement(
+        'h1',
+        null,
+        ['title'],
+        'The Lounge'
+    );
 
-    content.appendChild(header);
-    header.innerHTML = 'The Lounge';
+    main.appendChild(title)
 
-    content.appendChild(menuBody)
-    menuBody.innerHTML = "Menu Here!"
+    menu.forEach((item) => {
+        const div = createHtmlElement('div', null, ['menu-item'], null);
 
- 
+        const name = createHtmlElement('h2', null, ['name'], item.name);
+        const description = createHtmlElement(
+            'p',
+            null,
+            ['menu-text'],
+            item.description
+        );
+        
+        const price = createHtmlElement('h2', null,  ['name'], item.price);
+
+        div.appendChild(name);
+        div.appendChild(description);
+        div.appendChild(price);
+
+        main.appendChild(div);
+    })
+
+    content.appendChild(main);
 }
+
+export {render as renderMenu};
