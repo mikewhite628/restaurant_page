@@ -1,4 +1,5 @@
 import {content, createHtmlElement} from './index'
+import css from '../stylesheet.css'
 
 function render(){
     const main = document.createElement('main');
